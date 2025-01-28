@@ -231,14 +231,29 @@ def testingPrep(Stock_ticker):
     print("Testing data has been prepared")
 
 
+# Prepares the news for sentiment analysis
+def newsPrep(ticker):
+    newsList = []
+    ticker = yf.Ticker(ticker)
+    newsList = ticker.news()
+    return newsList
 
 
 
 
 
 
-trainingPrep("BTC-USD")
-testingPrep("BTC-USD")
+
+
+# trainingPrep("BTC-USD")
+# testingPrep("BTC-USD")
+news = newsPrep("BTC-USD")
+
+series = pd.DataFrame(news)
+series.to_csv('news.csv')
+
+# print(series)
+
 
 # "BTC-USD"
 # data = pd.DataFrame()
